@@ -1,0 +1,40 @@
+{
+  "metadata": {
+    "analyzed_at": "2026-04-01T17:14:39.685297",
+    "repo_url": "https://github.com/Gimminu/pptx-builder",
+    "repo_owner": "Gimminu",
+    "repo_name": "pptx-builder"
+  },
+  "repository": {
+    "createdAt": "2026-04-01T07:35:29Z",
+    "description": "초보자를 위한 무료 AI 프레젠테이션 만들기 가이드 (Google Antigravity + GitHub Copilot)",
+    "forkCount": 0,
+    "languages": [
+      {
+        "size": 7189,
+        "node": {
+          "name": "JavaScript"
+        }
+      }
+    ],
+    "name": "pptx-builder",
+    "pushedAt": "2026-04-01T08:10:36Z",
+    "stargazerCount": 0
+  },
+  "tags": [],
+  "recent_commits": [
+    {
+      "sha": "f1f44ba",
+      "message": "feat: 실제 작동하는 PPTX 생성기 구현",
+      "author": "giminu0930",
+      "date": "2026-04-01T08:10:33Z"
+    },
+    {
+      "sha": "75ae0cd",
+      "message": "Initial commit: 초보자를 위한 무료 AI 프레젠테이션 만들기 가이드",
+      "author": "giminu0930",
+      "date": "2026-04-01T07:35:21Z"
+    }
+  ],
+  "contributors": []
+}

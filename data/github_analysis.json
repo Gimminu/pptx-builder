@@ -1,0 +1,127 @@
+{
+  "metadata": {
+    "analyzed_at": "2026-04-01T17:29:19.359055",
+    "repo_url": "https://github.com/Gimminu/capstone-design",
+    "repo_owner": "Gimminu",
+    "repo_name": "capstone-design",
+    "analyzer_version": "2.0"
+  },
+  "repository": {
+    "createdAt": "2026-03-08T05:42:29Z",
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "description": "",
+    "diskUsage": 207,
+    "forkCount": 0,
+    "isFork": false,
+    "isPrivate": false,
+    "languages": [
+      {
+        "size": 53712,
+        "node": {
+          "name": "Kotlin"
+        }
+      },
+      {
+        "size": 1085,
+        "node": {
+          "name": "Shell"
+        }
+      },
+      {
+        "size": 34816,
+        "node": {
+          "name": "JavaScript"
+        }
+      },
+      {
+        "size": 8575,
+        "node": {
+          "name": "CSS"
+        }
+      },
+      {
+        "size": 5781,
+        "node": {
+          "name": "HTML"
+        }
+      }
+    ],
+    "licenseInfo": null,
+    "name": "capstone-design",
+    "pushedAt": "2026-03-23T11:09:52Z",
+    "stargazerCount": 0
+  },
+  "project_goals": {
+    "summary": "capstone-design",
+    "objectives": [],
+    "features": [
+      "`docs/github-collaboration-guide.md`",
+      "`docs/team-ownership.md`",
+      "`shared/contracts/README.md`"
+    ]
+  },
+  "tags": [],
+  "tag_evolution": [],
+  "commit_timeline": {
+    "total_commits": 10,
+    "timeline": [
+      {
+        "month": "2026-03",
+        "commits": 10
+      }
+    ]
+  },
+  "contributors": [
+    {
+      "login": "Gimminu",
+      "contributions": 3,
+      "avatar_url": "https://avatars.githubusercontent.com/u/64068640?v=4",
+      "profile_url": "https://github.com/Gimminu"
+    },
+    {
+      "login": "haapppy23",
+      "contributions": 3,
+      "avatar_url": "https://avatars.githubusercontent.com/u/173771652?v=4",
+      "profile_url": "https://github.com/haapppy23"
+    }
+  ],
+  "language_breakdown": {
+    "languages": [
+      {
+        "name": "Kotlin",
+        "percentage": 51.7,
+        "bytes": 53712
+      },
+      {
+        "name": "JavaScript",
+        "percentage": 33.5,
+        "bytes": 34816
+      },
+      {
+        "name": "CSS",
+        "percentage": 8.2,
+        "bytes": 8575
+      },
+      {
+        "name": "HTML",
+        "percentage": 5.6,
+        "bytes": 5781
+      },
+      {
+        "name": "Shell",
+        "percentage": 1.0,
+        "bytes": 1085
+      }
+    ],
+    "primary": "Kotlin"
+  },
+  "summary": {
+    "total_releases": 0,
+    "total_contributors": 2,
+    "primary_language": "Kotlin",
+    "latest_release": "No releases",
+    "age_days": 24
+  }
+}
