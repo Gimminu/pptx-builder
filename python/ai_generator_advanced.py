@@ -261,93 +261,166 @@ Generate professional, engaging content NOW:"""
             "title": repo_name,
             "content": [
                 repo_info.get('description', 'Project Presentation'),
-                f"A {summary.get('age_days', 0)}-day journey of development"
+                f"📅 {summary.get('age_days', 0)}일간의 개발 여정"
             ],
-            "speaker_notes": "Opening slide introducing the project"
+            "speaker_notes": "프로젝트 소개 슬라이드"
+        })
+        
+        # Project overview
+        overview_content = []
+        if repo_info.get('description'):
+            overview_content.append(f"📝 {repo_info['description']}")
+        overview_content.extend([
+            f"⭐ {repo_info.get('stargazerCount', 0)} stars",
+            f"🍴 {repo_info.get('forkCount', 0)} forks",
+            f"💻 주요 언어: {summary.get('primary_language', 'Unknown')}",
+            f"👥 {summary.get('total_contributors', 0)}명의 기여자"
+        ])
+        
+        slides.append({
+            "type": "content",
+            "title": "프로젝트 개요",
+            "content": overview_content,
+            "speaker_notes": "프로젝트 기본 정보 및 통계",
+            "visual_suggestion": "stats overview"
         })
         
         # Project goals
         if goals.get('objectives'):
             slides.append({
                 "type": "content",
-                "title": "Project Objectives",
+                "title": "프로젝트 목표",
                 "content": goals['objectives'][:5],
-                "speaker_notes": "Core goals and objectives of the project"
+                "speaker_notes": "프로젝트의 핵심 목표와 방향성"
             })
         
-        # Technology stack
+        # Technology stack with chart
         if lang_breakdown.get('languages'):
             tech_content = [
-                f"{lang['name']} ({lang['percentage']}%)"
-                for lang in lang_breakdown['languages'][:4]
+                f"{lang['name']}: {lang['percentage']}%"
+                for lang in lang_breakdown['languages'][:5]
             ]
             slides.append({
                 "type": "content",
-                "title": "Technology Stack",
+                "title": "기술 스택",
                 "content": tech_content,
-                "speaker_notes": "Primary technologies used in the project",
-                "visual_suggestion": "pie chart of language distribution"
+                "speaker_notes": "프로젝트에서 사용하는 주요 기술",
+                "visual_suggestion": "pie chart",
+                "chart_data": {
+                    "type": "pie",
+                    "data": lang_breakdown['languages'][:5]
+                }
             })
         
-        # Evolution
+        # Version evolution
         if tag_evolution:
+            evo_content = []
+            for evo in tag_evolution[:5]:
+                changes = evo['changes']
+                evo_content.append(
+                    f"{evo['from']} → {evo['to']}: "
+                    f"{evo['commits_count']}개 커밋, "
+                    f"{changes.get('features', 0)}개 기능, "
+                    f"{changes.get('fixes', 0)}개 수정"
+                )
+            
             slides.append({
                 "type": "timeline",
-                "title": "Project Evolution",
-                "content": [
-                    f"{evo['from']} → {evo['to']}: {evo['commits_count']} commits, "
-                    f"{evo['changes'].get('features', 0)} features"
-                    for evo in tag_evolution[:4]
-                ],
-                "speaker_notes": "How the project evolved through versions",
+                "title": "버전 진화 과정",
+                "content": evo_content,
+                "speaker_notes": "프로젝트가 어떻게 발전해왔는지 보여주는 타임라인",
                 "visual_suggestion": "timeline visualization"
             })
         
-        # Activity
+        # Development activity with chart
         if timeline.get('timeline'):
-            recent_activity = timeline['timeline'][-6:]
+            activity_content = []
+            recent_months = timeline['timeline'][-6:]
+            
+            for month_data in recent_months:
+                activity_content.append(
+                    f"{month_data['month']}: {month_data['commits']}개 커밋"
+                )
+            
             slides.append({
                 "type": "stats",
-                "title": "Development Activity",
-                "content": [
-                    f"{month['month']}: {month['commits']} commits"
-                    for month in recent_activity
-                ],
-                "speaker_notes": "Development momentum and activity",
-                "visual_suggestion": "bar chart of monthly commits"
+                "title": "개발 활동 추이",
+                "content": activity_content,
+                "speaker_notes": "시간에 따른 개발 활동 추이",
+                "visual_suggestion": "line chart",
+                "chart_data": {
+                    "type": "timeline",
+                    "data": recent_months
+                }
+            })
+        
+        # Key features
+        if goals.get('features'):
+            slides.append({
+                "type": "content",
+                "title": "주요 기능",
+                "content": goals['features'][:5],
+                "speaker_notes": "프로젝트의 핵심 기능들"
             })
         
         # Team
         if contributors:
+            team_content = []
+            for c in contributors[:8]:
+                team_content.append(
+                    f"{c['login']}: {c['contributions']}개 기여"
+                )
+            
             slides.append({
                 "type": "team",
-                "title": f"Team ({len(contributors)} Contributors)",
-                "content": [
-                    f"{c['login']}: {c['contributions']} contributions"
-                    for c in contributors[:5]
-                ],
-                "speaker_notes": "Key team members and their contributions"
+                "title": f"팀 ({len(contributors)}명의 기여자)",
+                "content": team_content,
+                "speaker_notes": "프로젝트에 기여한 핵심 멤버들",
+                "chart_data": {
+                    "type": "contributors",
+                    "data": contributors[:5]
+                }
             })
         
         # Summary stats
         slides.append({
             "type": "stats",
-            "title": "Project Statistics",
+            "title": "프로젝트 통계",
             "content": [
-                f"📦 {summary.get('total_releases', 0)} releases",
-                f"💻 {timeline.get('total_commits', 0)} total commits",
-                f"👥 {summary.get('total_contributors', 0)} contributors",
-                f"⭐ {repo_info.get('stargazerCount', 0)} stars",
-                f"📅 {summary.get('age_days', 0)} days of development"
+                f"📦 {summary.get('total_releases', 0)}개 릴리스",
+                f"💾 {timeline.get('total_commits', 0)}개 커밋",
+                f"👥 {summary.get('total_contributors', 0)}명 기여자",
+                f"⭐ {repo_info.get('stargazerCount', 0)}개 스타",
+                f"🔄 {repo_info.get('forkCount', 0)}개 포크",
+                f"📅 {summary.get('age_days', 0)}일 개발 기간"
             ],
-            "speaker_notes": "Key metrics and achievements"
+            "speaker_notes": "프로젝트의 주요 성과 지표"
+        })
+        
+        # Call to action
+        slides.append({
+            "type": "content",
+            "title": "다음 단계",
+            "content": [
+                "🚀 프로젝트 계속 발전시키기",
+                "📖 문서화 개선",
+                "🤝 새로운 기여자 환영",
+                "✨ 피드백 및 제안 환영",
+                f"🔗 {repo_info.get('name', repo_name)}"
+            ],
+            "speaker_notes": "프로젝트 발전 방향 및 참여 독려"
         })
         
         return {
             "title": repo_name,
             "subtitle": repo_info.get('description', 'Project Presentation'),
             "theme_suggestion": "professional",
-            "slides": slides
+            "slides": slides,
+            "analysis_data": {
+                "languages": lang_breakdown.get('languages', []),
+                "timeline": timeline.get('timeline', []),
+                "contributors": contributors
+            }
         }
 
 

@@ -76,8 +76,11 @@ class PPTXBuilder {
     // Load content
     const content = JSON.parse(await fs.readFile(this.contentFile, 'utf-8'));
     
-    // Import PPTX generator
+    // Import PPTX generator, template, and charts
     const { default: PptxGenJS } = await import('pptxgenjs');
+    const template = await import(`./templates/${this.theme}.js`);
+    const charts = await import('./templates/charts.js');
+    
     const pptx = new PptxGenJS();
     
     // Set metadata
@@ -85,74 +88,68 @@ class PPTXBuilder {
     pptx.company = 'AI Generated';
     pptx.title = content.title || 'Presentation';
     pptx.subject = content.subtitle || 'Repository Analysis';
+    pptx.layout = 'LAYOUT_WIDE';
+    pptx.defineLayout({ name: 'CUSTOM', width: 10, height: 7.5 });
+    pptx.layout = 'CUSTOM';
     
-    // Title slide
-    const titleSlide = pptx.addSlide();
-    titleSlide.background = { color: '1e3a8a' };
+    console.log(`   📐 Using template: ${this.theme}`);
     
-    titleSlide.addText(content.title, {
-      x: 0.5,
-      y: 2.0,
-      w: 9,
-      h: 1.5,
-      fontSize: 48,
-      bold: true,
-      color: 'FFFFFF',
-      align: 'center'
+    // Title slide using template
+    template.createTitleSlide(pptx, {
+      title: content.title,
+      subtitle: content.subtitle
     });
     
-    if (content.subtitle) {
-      titleSlide.addText(content.subtitle, {
-        x: 1,
-        y: 3.8,
-        w: 8,
-        h: 0.8,
-        fontSize: 24,
-        color: 'e0e7ff',
-        align: 'center'
-      });
-    }
+    console.log(`   ✓ Created title slide`);
     
-    // Content slides
-    for (const slide of content.slides || []) {
-      if (slide.type === 'title') continue; // Skip duplicate title
+    // Content slides using template
+    let slideCount = 1;
+    const analysisData = content.analysis_data || {};
+    
+    for (const slideData of content.slides || []) {
+      if (slideData.type === 'title') continue; // Skip duplicate title
       
-      const pptxSlide = pptx.addSlide();
-      
-      // Add title
-      pptxSlide.addText(slide.title, {
-        x: 0.5,
-        y: 0.4,
-        w: 9,
-        h: 0.6,
-        fontSize: 32,
-        bold: true,
-        color: '1e3a8a'
-      });
-      
-      // Add content
-      if (slide.content && slide.content.length > 0) {
-        const bullets = slide.content.map(text => ({
-          text: text,
-          options: { bullet: true, fontSize: 18, color: '334155' }
-        }));
+      // Create slide based on type
+      if (slideData.type === 'timeline') {
+        template.createTimelineSlide(pptx, slideData);
+      } else if (slideData.type === 'stats') {
+        template.createStatsSlide(pptx, slideData);
         
-        pptxSlide.addText(bullets, {
-          x: 0.7,
-          y: 1.3,
-          w: 8.6,
-          h: 4.0,
-          fontSize: 18,
-          color: '334155'
-        });
+        // Add chart if data available
+        if (slideData.chart_data) {
+          const slide = pptx.getSlide(slideCount);
+          if (slideData.chart_data.type === 'timeline' && slideData.chart_data.data) {
+            // Timeline is rendered by template, skip chart
+          }
+        }
+      } else if (slideData.type === 'team') {
+        template.createTeamSlide(pptx, slideData);
+      } else {
+        // Regular content slide
+        template.createContentSlide(pptx, slideData);
+        
+        // Add chart if specified
+        if (slideData.chart_data) {
+          const slide = pptx.slides[pptx.slides.length - 1];
+          
+          if (slideData.chart_data.type === 'pie' && slideData.chart_data.data) {
+            const chartData = slideData.chart_data.data.map(lang => ({
+              label: lang.name,
+              value: lang.percentage
+            }));
+            charts.createPieChart(slide, chartData, {
+              x: 5.5,
+              y: 1.8,
+              w: 4,
+              h: 4.5,
+              title: ''
+            });
+          }
+        }
       }
       
-      // Add visual suggestion as note
-      if (slide.visual_suggestion) {
-        pptxSlide.addNotes(`Visual: ${slide.visual_suggestion}\n\n${slide.speaker_notes || ''}`);
-      } else if (slide.speaker_notes) {
-        pptxSlide.addNotes(slide.speaker_notes);
-      }
+      console.log(`   ✓ Slide ${slideCount}: ${slideData.title}`);
+      slideCount++;
     }
     
     // Save
@@ -162,6 +159,10 @@ class PPTXBuilder {
     await pptx.writeFile({ fileName: outputPath });
     
     console.log(`\n✅ Presentation created: ${outputPath}`);
+    console.log(`   📊 Total slides: ${slideCount + 1}`);
+    
+    const stats = await fs.stat(outputPath);
+    console.log(`   💾 File size: ${(stats.size / 1024).toFixed(1)} KB`);
     
     return outputPath;
   }

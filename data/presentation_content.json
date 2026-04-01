@@ -8,51 +8,192 @@
       "title": "capstone-design",
       "content": [
         "",
-        "A 24-day journey of development"
+        "📅 24일간의 개발 여정"
       ],
-      "speaker_notes": "Opening slide introducing the project"
+      "speaker_notes": "프로젝트 소개 슬라이드"
     },
     {
       "type": "content",
-      "title": "Technology Stack",
+      "title": "프로젝트 개요",
       "content": [
-        "Kotlin (51.7%)",
-        "JavaScript (33.5%)",
-        "CSS (8.2%)",
-        "HTML (5.6%)"
+        "⭐ 0 stars",
+        "🍴 0 forks",
+        "💻 주요 언어: Kotlin",
+        "👥 2명의 기여자"
       ],
-      "speaker_notes": "Primary technologies used in the project",
-      "visual_suggestion": "pie chart of language distribution"
+      "speaker_notes": "프로젝트 기본 정보 및 통계",
+      "visual_suggestion": "stats overview"
+    },
+    {
+      "type": "content",
+      "title": "기술 스택",
+      "content": [
+        "Kotlin: 51.7%",
+        "JavaScript: 33.5%",
+        "CSS: 8.2%",
+        "HTML: 5.6%",
+        "Shell: 1.0%"
+      ],
+      "speaker_notes": "프로젝트에서 사용하는 주요 기술",
+      "visual_suggestion": "pie chart",
+      "chart_data": {
+        "type": "pie",
+        "data": [
+          {
+            "name": "Kotlin",
+            "percentage": 51.7,
+            "bytes": 53712
+          },
+          {
+            "name": "JavaScript",
+            "percentage": 33.5,
+            "bytes": 34816
+          },
+          {
+            "name": "CSS",
+            "percentage": 8.2,
+            "bytes": 8575
+          },
+          {
+            "name": "HTML",
+            "percentage": 5.6,
+            "bytes": 5781
+          },
+          {
+            "name": "Shell",
+            "percentage": 1.0,
+            "bytes": 1085
+          }
+        ]
+      }
     },
     {
       "type": "stats",
-      "title": "Development Activity",
+      "title": "개발 활동 추이",
       "content": [
-        "2026-03: 10 commits"
+        "2026-03: 10개 커밋"
       ],
-      "speaker_notes": "Development momentum and activity",
-      "visual_suggestion": "bar chart of monthly commits"
+      "speaker_notes": "시간에 따른 개발 활동 추이",
+      "visual_suggestion": "line chart",
+      "chart_data": {
+        "type": "timeline",
+        "data": [
+          {
+            "month": "2026-03",
+            "commits": 10
+          }
+        ]
+      }
+    },
+    {
+      "type": "content",
+      "title": "주요 기능",
+      "content": [
+        "`docs/github-collaboration-guide.md`",
+        "`docs/team-ownership.md`",
+        "`shared/contracts/README.md`"
+      ],
+      "speaker_notes": "프로젝트의 핵심 기능들"
     },
     {
       "type": "team",
-      "title": "Team (2 Contributors)",
+      "title": "팀 (2명의 기여자)",
       "content": [
-        "Gimminu: 3 contributions",
-        "haapppy23: 3 contributions"
+        "Gimminu: 3개 기여",
+        "haapppy23: 3개 기여"
       ],
-      "speaker_notes": "Key team members and their contributions"
+      "speaker_notes": "프로젝트에 기여한 핵심 멤버들",
+      "chart_data": {
+        "type": "contributors",
+        "data": [
+          {
+            "login": "Gimminu",
+            "contributions": 3,
+            "avatar_url": "https://avatars.githubusercontent.com/u/64068640?v=4",
+            "profile_url": "https://github.com/Gimminu"
+          },
+          {
+            "login": "haapppy23",
+            "contributions": 3,
+            "avatar_url": "https://avatars.githubusercontent.com/u/173771652?v=4",
+            "profile_url": "https://github.com/haapppy23"
+          }
+        ]
+      }
     },
     {
       "type": "stats",
-      "title": "Project Statistics",
+      "title": "프로젝트 통계",
       "content": [
-        "📦 0 releases",
-        "💻 10 total commits",
-        "👥 2 contributors",
-        "⭐ 0 stars",
-        "📅 24 days of development"
+        "📦 0개 릴리스",
+        "💾 10개 커밋",
+        "👥 2명 기여자",
+        "⭐ 0개 스타",
+        "🔄 0개 포크",
+        "📅 24일 개발 기간"
       ],
-      "speaker_notes": "Key metrics and achievements"
+      "speaker_notes": "프로젝트의 주요 성과 지표"
+    },
+    {
+      "type": "content",
+      "title": "다음 단계",
+      "content": [
+        "🚀 프로젝트 계속 발전시키기",
+        "📖 문서화 개선",
+        "🤝 새로운 기여자 환영",
+        "✨ 피드백 및 제안 환영",
+        "🔗 capstone-design"
+      ],
+      "speaker_notes": "프로젝트 발전 방향 및 참여 독려"
     }
-  ]
+  ],
+  "analysis_data": {
+    "languages": [
+      {
+        "name": "Kotlin",
+        "percentage": 51.7,
+        "bytes": 53712
+      },
+      {
+        "name": "JavaScript",
+        "percentage": 33.5,
+        "bytes": 34816
+      },
+      {
+        "name": "CSS",
+        "percentage": 8.2,
+        "bytes": 8575
+      },
+      {
+        "name": "HTML",
+        "percentage": 5.6,
+        "bytes": 5781
+      },
+      {
+        "name": "Shell",
+        "percentage": 1.0,
+        "bytes": 1085
+      }
+    ],
+    "timeline": [
+      {
+        "month": "2026-03",
+        "commits": 10
+      }
+    ],
+    "contributors": [
+      {
+        "login": "Gimminu",
+        "contributions": 3,
+        "avatar_url": "https://avatars.githubusercontent.com/u/64068640?v=4",
+        "profile_url": "https://github.com/Gimminu"
+      },
+      {
+        "login": "haapppy23",
+        "contributions": 3,
+        "avatar_url": "https://avatars.githubusercontent.com/u/173771652?v=4",
+        "profile_url": "https://github.com/haapppy23"
+      }
+    ]
+  }
 }
