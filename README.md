@@ -1,14 +1,30 @@
-# PPTX Builder 2.0
+# PPTX Builder 2.0 - AI-Powered Presentation Generator
 
-**GitHub 레포지토리를 분석해서 AI로 자동으로 프레젠테이션을 생성하는 고급 도구**
+🤖 **Gamma.app 수준의 AI 기반 프레젠테이션 자동 생성 시스템**
+
+GitHub 저장소를 분석하여 전문적인 PowerPoint 프레젠테이션을 **AI가 자동으로 디자인**합니다.
 
 ## ✨ 특징
 
-- 🔍 **GitHub 레포지토리 심층 분석**: Tags, commits, contributors, 변경 이력 자동 추적
-- 🤖 **AI 콘텐츠 생성**: Google Gemini API로 고품질 슬라이드 콘텐츠 자동 생성
-- 📊 **프로젝트 진화 추적**: Tag 간 변경사항 분석, 버전별 진화 과정 시각화
-- 🎨 **전문적인 디자인**: 깔끔한 템플릿과 자동 레이아웃
-- ⚡ **원클릭 실행**: 한 번의 명령으로 분석부터 PPTX 생성까지
+### 🎨 5가지 프로페셔널 템플릿
+- **Professional** - 기업용, 딥블루 + 골드, 안정적
+- **Modern** - 테크 중심, 인디고 + 핑크, 미니멀
+- **Minimal** - 스위스 디자인, 흑백 + 레드, 초간결
+- **Creative** - 창의적, 다채로운 색상, 그라디언트
+- **Bold** - 대담한, 블랙 + 네온, 강렬한 타이포
+
+### 🤖 AI 디자인 엔진
+- ✅ **자동 템플릿 선택** - 프로젝트 성격 분석 후 최적 템플릿 선택
+- ✅ **슬라이드 최적화** - 각 슬라이드마다 레이아웃 자동 결정
+- ✅ **스마트 차트** - 데이터에 맞는 차트 타입 자동 선택
+- ✅ **한국어 콘텐츠** - 고품질 한국어 슬라이드 생성
+
+### 📊 GitHub 심층 분석
+- 📦 저장소 메타데이터 (이름, 설명, 토픽, 언어)
+- 🏷️  태그/릴리스 분석 및 버전 진화 추적
+- 📈 커밋 타임라인 및 활동 패턴
+- 👥 기여자 분석 및 팀 구성
+- 💻 프로그래밍 언어 분포
 
 ## 🚀 빠른 시작
 
@@ -17,16 +33,46 @@
 git clone https://github.com/Gimminu/pptx-builder.git
 cd pptx-builder
 npm install
+pip install -r python/requirements.txt
 
-# 2. API 키 설정
+# 2. API 키 설정 (선택사항 - fallback 생성기 사용 가능)
 cp .env.example .env
 # .env 파일을 열어서 GEMINI_API_KEY 입력
 
-# 3. 실행
+# 3. AI가 자동으로 템플릿 선택
 npm start -- https://github.com/user/repo
+
+# 또는 특정 템플릿 지정
+npm start -- https://github.com/user/repo --theme modern
 
 # 4. 결과 확인
 open output/presentation.pptx
+```
+
+## 📐 템플릿 선택 가이드
+
+| 템플릿 | 용도 | 색상 | 특징 |
+|--------|------|------|------|
+| **professional** | 기업 발표, 투자 유치 | 딥블루 + 골드 | 안정적, 신뢰감 |
+| **modern** | 테크 컨퍼런스, 개발자 | 인디고 + 핑크 | 세련됨, 미니멀 |
+| **minimal** | 학술 발표, 간결한 자료 | 흑백 + 레드 | 초간결, 여백 중시 |
+| **creative** | 디자인 쇼케이스, 창의적 | 다채로운 색상 | 화려함, 임팩트 |
+| **bold** | 스타트업 피칭, 혁신적 | 블랙 + 네온 | 강렬함, 대담함 |
+
+## 🎯 사용 예시
+
+```bash
+# 기업용 프레젠테이션
+npm start -- https://github.com/mycompany/product --theme professional
+
+# 오픈소스 프로젝트 소개
+npm start -- https://github.com/username/opensource-project --theme modern
+
+# 스타트업 피칭덱
+npm start -- https://github.com/mystartup/mvp --theme bold
+
+# 학술 발표 자료
+npm start -- https://github.com/researcher/paper-impl --theme minimal
 ```
 
 ## 📋 사전 요구사항

@@ -171,7 +171,11 @@ class PPTXBuilder {
     const startTime = Date.now();
     
     console.log('\n' + '='.repeat(60));
-    console.log('🚀 PPTX Builder - Advanced Presentation Generator');
+    console.log('🚀 PPTX Builder - AI-Powered Presentation Generator');
+    console.log('='.repeat(60));
+    console.log(`   🤖 AI Design Engine: Enabled`);
+    console.log(`   📐 Templates: professional, modern, minimal, creative, bold`);
+    console.log(`   🎨 Mode: ${this.theme === 'professional' ? 'Auto-select' : `Manual (${this.theme})`}`);
     console.log('='.repeat(60));
     console.log(`\n📦 Repository: ${this.repoUrl}`);
     console.log(`🎨 Theme: ${this.theme}`);
