@@ -1,0 +1,26 @@
+{
+  "name": "pptx-builder",
+  "version": "1.0.0",
+  "description": "Free AI presentation builder using Google Antigravity",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node src/test.js"
+  },
+  "keywords": [
+    "pptx",
+    "powerpoint",
+    "ai",
+    "presentation",
+    "antigravity"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "pptxgenjs": "^3.12.0",
+    "marked": "^12.0.0",
+    "glob": "^10.3.10"
+  }
+}
